@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>animacion</title>
+    <style>
+    body{
+
+         margin: 0;
+         overflow-x: hidden;
+         overflow-y: hidden;
+    }
+
+    #contenedor
+    {
+         width:390px;
+         height: 180px;
+         position: relative;
+         margin: 0;
+         overflow-x: hidden;
+         overflow-y: hidden;
+         /*background: #eee;*/
+         background:url(img/smi-sombra.png);
+    }
+
+    #caja{
+        width:50px;
+        height:50px;
+        border-radius: 50%;
+        position: absolute;
+        background:url(img/smi1.png);
+        z-index: 999;
+     background-position: center;
+
+    }
+
+    #mensaje{
+        width: 200px;
+        height: 200px;
+        background-color: #F8846F;
+        display:none;
+        top: 80px;
+        left: 80px;
+        position: relative;
+        z-index: 9;
+        border-radius: 50%
+        
+    }
+    #texto{
+        position: absolute;
+        font-size: 23px;
+        font-family: Arial;
+        color: #FFF;
+        text-align: center;
+        margin:64px 0px 0px 25px;
+        font-weight: bolder;
+        display: none;
+
+    }
+    </style>
+    <script >
+        var posX;
+        var posY;
+        var sprite;
+
+
+        window.onload =init;
+
+        function init(){
+
+            posX=Math.floor((Math.random() * 100) + 1);;
+            posY=Math.floor((Math.random() * 100) + 1);;
+            vX=5;
+            vY=3;
+            sprite =document.getElementById("caja");
+            sprite.style.left =posX + "px";
+            sprite.style.top =posY + "px";
+            sprite.style.backgroundPosition = -posX+"px"+" " +-posY+"px"
+
+            setInterval(mover, 20);
+
+
+        }
+
+
+        function mover(){
+            posX +=vX;
+            posY +=vY;
+            sprite.style.left=posX + "px";
+            sprite.style.top=posY + "px";
+            sprite.style.backgroundPosition = -posX+"px"+" " + -posY+"px"
+
+            if( posX>390-50|| posX<0){
+                vX = -vX;
+            }
+
+            if( posY>180-50|| posY<0){
+                vY = -vY;                
+            }
+        }
+
+
+                        
+
+    </script>
+  </head>
+  <body>
+      <div id="contenedor">
+
+        <div id="caja">
+        </div>
+        <div id="mensaje">
+            <div id="texto"> 
+            </div>
+        </div>  
+    </div>  
+  </body>
+</html>
